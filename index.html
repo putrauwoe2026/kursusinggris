@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>SpeakUp – Kursus Bahasa Inggris Online</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#0a0f1e;--surface:#111827;--card:#161f35;
+      --accent:#38bdf8;--accent2:#f472b6;--accent3:#a78bfa;
+      --text:#e2e8f0;--muted:#64748b;--border:rgba(56,189,248,.15);
+      --glow:rgba(56,189,248,.25);
+      --fd:'Syne',sans-serif;--fb:'DM Sans',sans-serif;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--fb);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.5}
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;background:rgba(10,15,30,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all .3s}
+    .logo{font-family:var(--fd);font-size:1.6rem;font-weight:800;color:var(--accent);text-decoration:none;letter-spacing:-.5px}
+    .logo span{color:var(--accent2)}
+    .nav-links{display:flex;gap:2.5rem;list-style:none}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+    .nav-links a:hover{color:var(--accent)}
+    .nav-cta{background:var(--accent);color:#0a0f1e;padding:.55rem 1.4rem;border-radius:8px;font-weight:700;font-size:.9rem;text-decoration:none;transition:all .2s;font-family:var(--fd)}
+    .nav-cta:hover{background:#7dd3fc;transform:translateY(-1px);box-shadow:0 8px 24px var(--glow)}
+    .hamburger{display:none;cursor:pointer;flex-direction:column;gap:5px;background:none;border:none;padding:4px}
+    .hamburger span{width:24px;height:2px;background:var(--text);border-radius:2px;display:block;transition:.3s}
+    .mob-menu{display:none;position:fixed;top:70px;left:0;right:0;background:rgba(10,15,30,.97);backdrop-filter:blur(20px);padding:2rem 5%;flex-direction:column;gap:1.5rem;border-bottom:1px solid var(--border);z-index:999}
+    .mob-menu.open{display:flex}
+    .mob-menu a{color:var(--text);text-decoration:none;font-size:1.1rem;font-weight:500;padding:.5rem 0;border-bottom:1px solid var(--border)}
+    section{padding:6rem 5%}
+    .section-tag{font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem}
+    .section-title{font-family:var(--fd);font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-1px;margin-bottom:1rem}
+    .section-sub{color:var(--muted);font-size:1.05rem;font-weight:300;max-width:520px}
+    .section-header{margin-bottom:3.5rem}
+    .center{text-align:center}
+    .center .section-sub{margin:0 auto}
+    #hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:8rem 5% 5rem;position:relative;overflow:hidden;text-align:center}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 20%,rgba(56,189,248,.12) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 80% 80%,rgba(167,139,250,.1) 0%,transparent 50%),radial-gradient(ellipse 40% 30% at 20% 70%,rgba(244,114,182,.08) 0%,transparent 50%)}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%)}
+    .hero-content{position:relative;z-index:2;max-width:800px}
+    .badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(56,189,248,.1);border:1px solid var(--border);color:var(--accent);font-size:.8rem;font-weight:600;padding:.4rem 1rem;border-radius:100px;margin-bottom:2rem;letter-spacing:1px;text-transform:uppercase;animation:fadeDown .6s ease both}
+    .badge::before{content:'●';font-size:.5rem;animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+    h1{font-family:var(--fd);font-size:clamp(2.8rem,7vw,5.2rem);font-weight:800;line-height:1.05;letter-spacing:-2px;animation:fadeUp .7s .1s ease both}
+    .hl1{background:linear-gradient(135deg,var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hl2{background:linear-gradient(135deg,var(--accent2),#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-sub{font-size:1.15rem;color:var(--muted);margin:1.5rem auto 2.5rem;max-width:540px;font-weight:300;animation:fadeUp .7s .2s ease both}
+    .hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeUp .7s .3s ease both}
+    .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent3));color:#fff;border:none;padding:.85rem 2.2rem;border-radius:10px;font-family:var(--fd);font-size:1rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all .2s;box-shadow:0 8px 30px rgba(56,189,248,.3)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(56,189,248,.4)}
+    .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--text);padding:.85rem 2.2rem;border-radius:10px;font-family:var(--fd);font-size:1rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s}
+    .btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+    .hero-stats{display:flex;gap:3rem;justify-content:center;margin-top:4rem;flex-wrap:wrap;animation:fadeUp .7s .4s ease both}
+    .stat{text-align:center}
+    .stat-num{font-family:var(--fd);font-size:2rem;font-weight:800;color:var(--accent)}
+    .stat-label{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
+    #why{background:var(--surface)}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem}
+    .why-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all .3s}
+    .why-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+    .why-icon{font-size:2.2rem;margin-bottom:1rem}
+    .why-card h3{font-family:var(--fd);font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
+    .why-card p{color:var(--muted);font-size:.9rem;line-height:1.65}
+    .courses-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem}
+    .course-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all .3s;cursor:pointer}
+    .course-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.5);border-color:var(--accent)}
+    .course-thumb{height:180px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:4rem}
+    .tb{background:linear-gradient(135deg,#1e3a5f,#0f2544)}
+    .ti{background:linear-gradient(135deg,#2d1b4e,#1a0f36)}
+    .ta{background:linear-gradient(135deg,#3d1a2e,#200f1a)}
+    .tbz{background:linear-gradient(135deg,#1a3d2e,#0f2018)}
+    .tie{background:linear-gradient(135deg,#3d341a,#201a0f)}
+    .tc{background:linear-gradient(135deg,#1a2d3d,#0f1820)}
+    .clvl{position:absolute;top:1rem;right:1rem;font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:.3rem .7rem;border-radius:100px}
+    .lv-b{background:rgba(56,189,248,.2);color:var(--accent)}
+    .lv-i{background:rgba(167,139,250,.2);color:var(--accent3)}
+    .lv-a{background:rgba(244,114,182,.2);color:var(--accent2)}
+    .course-body{padding:1.5rem}
+    .course-body h3{font-family:var(--fd);font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
+    .course-body p{color:var(--muted);font-size:.875rem;line-height:1.6;margin-bottom:1rem}
+    .course-meta{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.2rem}
+    .meta-item{font-size:.78rem;color:var(--muted)}
+    .course-footer{display:flex;align-items:center;justify-content:space-between}
+    .price{font-family:var(--fd);font-size:1.3rem;font-weight:800;color:var(--accent)}
+    .price-free{color:#4ade80}
+    .enroll-btn{background:linear-gradient(135deg,var(--accent),var(--accent3));color:#fff;border:none;padding:.5rem 1.2rem;border-radius:8px;font-size:.85rem;font-weight:700;cursor:pointer;font-family:var(--fd);transition:all .2s}
+    .enroll-btn:hover{transform:scale(1.05);box-shadow:0 6px 20px var(--glow)}
+    #teachers{background:var(--surface)}
+    .teacher-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem;text-align:center;transition:all .3s}
+    .teacher-card:hover{border-color:var(--accent3);transform:translateY(-4px)}
+    .t-avatar{width:80px;height:80px;border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:2.2rem;border:2px solid var(--border)}
+    .teacher-card h3{font-family:var(--fd);font-size:1.05rem;font-weight:700}
+    .teacher-card .role{font-size:.82rem;color:var(--accent);margin:.3rem 0 .7rem}
+    .teacher-card p{font-size:.82rem;color:var(--muted);line-height:1.6}
+    .stars{color:#fbbf24;font-size:.9rem;margin-top:.7rem}
+    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem}
+    .step{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all .3s}
+    .step:hover{border-color:var(--accent3)}
+    .step-num{font-family:var(--fd);font-size:3.5rem;font-weight:800;color:rgba(56,189,248,.1);line-height:1;margin-bottom:.5rem}
+    .step h3{font-family:var(--fd);font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
+    .step p{font-size:.875rem;color:var(--muted);line-height:1.65}
+    #testimonials{background:var(--surface);overflow:hidden}
+    .testi-wrap{overflow:hidden;padding:1rem 0}
+    .testi-track{display:flex;gap:1.5rem;animation:scroll 35s linear infinite;width:max-content}
+    .testi-track:hover{animation-play-state:paused}
+    @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .testi-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.8rem;width:300px;flex-shrink:0}
+    .testi-card p{font-size:.9rem;color:var(--text);line-height:1.7;font-style:italic;margin-bottom:1.2rem}
+    .testi-author{display:flex;align-items:center;gap:.8rem}
+    .a-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:var(--surface)}
+    .a-name{font-family:var(--fd);font-size:.9rem;font-weight:700}
+    .a-role{font-size:.75rem;color:var(--muted)}
+    .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem;max-width:950px;margin:0 auto}
+    .pricing-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2.5rem;transition:all .3s}
+    .pricing-card.popular{border-color:var(--accent);background:linear-gradient(135deg,rgba(56,189,248,.08),var(--card));position:relative}
+    .pop-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent),var(--accent3));color:#fff;font-size:.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:.35rem 1.2rem;border-radius:100px;font-family:var(--fd);white-space:nowrap}
+    .plan-name{font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--muted);margin-bottom:.5rem}
+    .plan-price{font-family:var(--fd);font-size:3rem;font-weight:800;line-height:1}
+    .plan-price sub{font-size:1rem;color:var(--muted);font-weight:400}
+    .plan-desc{font-size:.875rem;color:var(--muted);margin:1rem 0 1.5rem}
+    .plan-features{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-bottom:2rem}
+    .plan-features li{font-size:.875rem;display:flex;align-items:center;gap:.6rem}
+    .plan-features li::before{content:'✓';color:var(--accent);font-weight:700}
+    .plan-features li.no::before{content:'✕';color:var(--muted)}
+    .plan-features li.no{color:var(--muted)}
+    .plan-btn{width:100%;padding:.85rem;border-radius:10px;font-family:var(--fd);font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;border:none}
+    .plan-btn.outline{background:transparent;border:1px solid var(--border);color:var(--text)}
+    .plan-btn.outline:hover{border-color:var(--accent);color:var(--accent)}
+    .plan-btn.filled{background:linear-gradient(135deg,var(--accent),var(--accent3));color:#fff}
+    .plan-btn.filled:hover{transform:translateY(-2px);box-shadow:0 10px 30px var(--glow)}
+    #faq{background:var(--surface)}
+    .faq-list{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:1rem}
+    .faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .2s}
+    .faq-item.open{border-color:var(--accent)}
+    .faq-q{padding:1.4rem 1.6rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-family:var(--fd);font-size:1rem;font-weight:600;user-select:none}
+    .faq-arrow{font-size:1rem;color:var(--muted);transition:transform .3s}
+    .faq-item.open .faq-arrow{transform:rotate(45deg);color:var(--accent)}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;padding:0 1.6rem;color:var(--muted);font-size:.9rem;line-height:1.7}
+    .faq-item.open .faq-a{max-height:220px;padding-bottom:1.4rem}
+    #cta{text-align:center;position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(56,189,248,.07),rgba(167,139,250,.05));border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    #cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(56,189,248,.06) 0%,transparent 70%)}
+    #cta .inner{position:relative;z-index:1}
+    #cta h2{font-family:var(--fd);font-size:clamp(2rem,5vw,3.5rem);font-weight:800;letter-spacing:-1px;margin-bottom:1rem}
+    #cta p{color:var(--muted);font-size:1.05rem;max-width:480px;margin:0 auto 2.5rem}
+    .email-form{display:flex;gap:.8rem;max-width:440px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+    .email-form input{flex:1;min-width:220px;padding:.85rem 1.2rem;background:var(--card);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:.95rem;outline:none;transition:border-color .2s;font-family:var(--fb)}
+    .email-form input:focus{border-color:var(--accent)}
+    .email-form input::placeholder{color:var(--muted)}
+    .email-form button{background:linear-gradient(135deg,var(--accent),var(--accent3));color:#fff;border:none;padding:.85rem 1.6rem;border-radius:10px;font-family:var(--fd);font-size:.95rem;font-weight:700;cursor:pointer;transition:all .2s}
+    .email-form button:hover{transform:translateY(-2px);box-shadow:0 8px 24px var(--glow)}
+    footer{background:#060a14;padding:4rem 5% 2rem;border-top:1px solid var(--border)}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+    .footer-brand .logo{display:block;margin-bottom:1rem;font-family:var(--fd);font-size:1.6rem;font-weight:800;color:var(--accent)}
+    .footer-brand p{font-size:.875rem;color:var(--muted);line-height:1.7;max-width:260px}
+    .footer-col h4{font-family:var(--fd);font-size:.9rem;font-weight:700;margin-bottom:1.2rem}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+    .footer-col ul li a{font-size:.85rem;color:var(--muted);text-decoration:none;transition:color .2s}
+    .footer-col ul li a:hover{color:var(--accent)}
+    .footer-bottom{border-top:1px solid var(--border);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+    .footer-bottom p{font-size:.8rem;color:var(--muted)}
+    .socials{display:flex;gap:1rem}
+    .socials a{width:36px;height:36px;border-radius:8px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1rem;transition:all .2s}
+    .socials a:hover{border-color:var(--accent);transform:translateY(-2px)}
+    .modal-overlay{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);align-items:center;justify-content:center}
+    .modal-overlay.active{display:flex}
+    .modal{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2.5rem;max-width:480px;width:90%;position:relative;animation:fadeUp .3s ease}
+    .modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--muted);font-size:1.4rem;cursor:pointer;transition:color .2s}
+    .modal-close:hover{color:var(--text)}
+    .modal h2{font-family:var(--fd);font-size:1.5rem;font-weight:800;margin-bottom:.4rem}
+    .modal .course-title{color:var(--accent);font-family:var(--fd);font-size:.95rem;margin-bottom:.8rem}
+    .modal p{color:var(--muted);font-size:.9rem;margin-bottom:1.5rem}
+    .modal-form{display:flex;flex-direction:column;gap:1rem}
+    .modal-form input,.modal-form select{padding:.8rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:.95rem;outline:none;font-family:var(--fb);transition:border-color .2s}
+    .modal-form input:focus,.modal-form select:focus{border-color:var(--accent)}
+    .modal-form select option{background:var(--surface)}
+    .toast{position:fixed;bottom:2rem;right:2rem;background:var(--card);border:1px solid var(--accent);border-radius:12px;padding:1rem 1.5rem;z-index:3000;display:flex;align-items:center;gap:.8rem;transform:translateY(100px);opacity:0;transition:all .4s ease;max-width:320px}
+    .toast.show{transform:translateY(0);opacity:1}
+    .toast-icon{font-size:1.4rem}
+    .toast-text{font-size:.9rem}
+    .toast-title{font-family:var(--fd);font-weight:700;font-size:1rem;margin-bottom:.2rem}
+    .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.visible{opacity:1;transform:none}
+    /* AUTH MODAL */
+    .auth-overlay{display:none;position:fixed;inset:0;z-index:5000;background:rgba(0,0,0,.88);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:1rem}
+    .auth-overlay.active{display:flex}
+    .auth-box{background:var(--card);border:1px solid var(--border);border-radius:24px;width:100%;max-width:480px;position:relative;overflow:hidden;animation:fadeUp .35s ease}
+    .auth-close{position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--muted);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:10}
+    .auth-close:hover{color:var(--text);border-color:var(--accent)}
+    /* role tabs */
+    .role-tabs{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border)}
+    .role-tab{padding:1.1rem;text-align:center;cursor:pointer;font-family:var(--fd);font-size:.9rem;font-weight:700;color:var(--muted);transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.5rem;border:none;background:none}
+    .role-tab.active{color:var(--accent);background:rgba(56,189,248,.06);border-bottom:2px solid var(--accent)}
+    .role-tab:hover:not(.active){color:var(--text);background:rgba(255,255,255,.03)}
+    /* mode tabs (login/signup) */
+    .auth-body{padding:2rem}
+    .mode-tabs{display:flex;background:var(--surface);border-radius:12px;padding:.3rem;margin-bottom:1.6rem;gap:.3rem}
+    .mode-tab{flex:1;padding:.55rem;text-align:center;border-radius:9px;cursor:pointer;font-family:var(--fd);font-size:.85rem;font-weight:700;color:var(--muted);border:none;background:none;transition:all .2s}
+    .mode-tab.active{background:var(--card);color:var(--text);box-shadow:0 2px 8px rgba(0,0,0,.3)}
+    .auth-panel{display:none}
+    .auth-panel.active{display:flex;flex-direction:column;gap:.9rem}
+    .auth-panel h3{font-family:var(--fd);font-size:1.3rem;font-weight:800;margin-bottom:.2rem}
+    .auth-panel .sub{font-size:.85rem;color:var(--muted);margin-bottom:.4rem}
+    .auth-panel input,.auth-panel select{width:100%;padding:.8rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:.93rem;outline:none;font-family:var(--fb);transition:border-color .2s}
+    .auth-panel input:focus,.auth-panel select:focus{border-color:var(--accent)}
+    .auth-panel input::placeholder{color:var(--muted)}
+    .auth-panel select option{background:var(--surface)}
+    .input-group{position:relative}
+    .input-group input{padding-right:2.8rem}
+    .toggle-pw{position:absolute;right:.9rem;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem;padding:0}
+    .auth-submit{width:100%;padding:.9rem;background:linear-gradient(135deg,var(--accent),var(--accent3));border:none;border-radius:10px;color:#fff;font-family:var(--fd);font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;margin-top:.3rem}
+    .auth-submit:hover{transform:translateY(-2px);box-shadow:0 10px 30px var(--glow)}
+    .auth-submit.teacher{background:linear-gradient(135deg,var(--accent3),var(--accent2))}
+    .auth-submit.teacher:hover{box-shadow:0 10px 30px rgba(167,139,250,.35)}
+    .auth-divider{display:flex;align-items:center;gap:.8rem;margin:.2rem 0}
+    .auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+    .auth-divider span{font-size:.75rem;color:var(--muted);white-space:nowrap}
+    .switch-mode{font-size:.83rem;color:var(--muted);text-align:center;margin-top:.2rem}
+    .switch-mode a{color:var(--accent);cursor:pointer;font-weight:600;text-decoration:none}
+    .switch-mode a:hover{text-decoration:underline}
+    .role-badge-guru{display:inline-block;background:rgba(167,139,250,.15);color:var(--accent3);border:1px solid rgba(167,139,250,.3);font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:.25rem .7rem;border-radius:100px;margin-bottom:.6rem}
+    .role-badge-murid{display:inline-block;background:rgba(56,189,248,.12);color:var(--accent);border:1px solid rgba(56,189,248,.25);font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:.25rem .7rem;border-radius:100px;margin-bottom:.6rem}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+    /* nav auth buttons */
+    .nav-auth{display:flex;align-items:center;gap:.7rem}
+    .btn-login{background:transparent;border:1px solid var(--border);color:var(--text);padding:.5rem 1.1rem;border-radius:8px;font-weight:600;font-size:.85rem;cursor:pointer;font-family:var(--fd);transition:all .2s}
+    .btn-login:hover{border-color:var(--accent);color:var(--accent)}
+    .btn-signup{background:linear-gradient(135deg,var(--accent),var(--accent3));color:#fff;border:none;padding:.5rem 1.1rem;border-radius:8px;font-weight:700;font-size:.85rem;cursor:pointer;font-family:var(--fd);transition:all .2s}
+    .btn-signup:hover{transform:translateY(-1px);box-shadow:0 6px 20px var(--glow)}
+    /* user avatar (logged in) */
+    .user-pill{display:none;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--border);border-radius:100px;padding:.35rem .9rem .35rem .4rem;cursor:pointer;transition:all .2s}
+    .user-pill:hover{border-color:var(--accent)}
+    .user-pill .u-ava{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent3));display:flex;align-items:center;justify-content:center;font-size:.85rem}
+    .user-pill .u-name{font-family:var(--fd);font-size:.82rem;font-weight:700;max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .user-pill .u-role{font-size:.7rem;color:var(--muted)}
+    .user-dropdown{display:none;position:absolute;top:calc(100% + .5rem);right:0;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:.5rem;min-width:180px;box-shadow:0 20px 50px rgba(0,0,0,.5);z-index:2000}
+    .user-dropdown.open{display:flex;flex-direction:column}
+    .u-dd-item{padding:.7rem 1rem;border-radius:8px;font-size:.85rem;cursor:pointer;transition:background .15s;display:flex;align-items:center;gap:.6rem}
+    .u-dd-item:hover{background:rgba(255,255,255,.04)}
+    .u-dd-sep{height:1px;background:var(--border);margin:.3rem 0}
+    .u-dd-logout{color:#f87171}
+    .pill-wrap{position:relative}
+    @media(max-width:768px){
+      .nav-links,.nav-cta{display:none}
+      .hamburger{display:flex}
+      .footer-top{grid-template-columns:1fr 1fr}
+      .hero-stats{gap:1.5rem}
+      .form-row{grid-template-columns:1fr}
+      .btn-login,.btn-signup{font-size:.78rem;padding:.45rem .85rem}
+    }
+    @media(max-width:480px){
+      .footer-top{grid-template-columns:1fr}
+      nav{padding:1rem 5%}
+      section{padding:4rem 5%}
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#" class="logo">Speak<span>Up</span></a>
+  <ul class="nav-links">
+    <li><a href="#why">Mengapa Kami</a></li>
+    <li><a href="#courses">Kursus</a></li>
+    <li><a href="#teachers">Pengajar</a></li>
+    <li><a href="#pricing">Harga</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-auth" id="navAuth">
+    <button class="btn-login" onclick="openAuth('murid','login')">Masuk</button>
+    <button class="btn-signup" onclick="openAuth('murid','signup')">Daftar Gratis</button>
+  </div>
+  <div style="display:none;align-items:center;gap:.5rem" id="pillWrap">
+    <div class="pill-wrap">
+      <div class="user-pill" id="userPill" onclick="toggleDropdown()">
+        <div class="u-ava" id="pillAva">👤</div>
+        <div><div class="u-name" id="pillName">User</div><div class="u-role" id="pillRole">Murid</div></div>
+      </div>
+      <div class="user-dropdown" id="userDropdown">
+        <div class="u-dd-item" onclick="openDashboard()">📊 Dashboard</div>
+        <div class="u-dd-item" onclick="openDashboard()">📚 Kursus Saya</div>
+        <div class="u-dd-item" onclick="openDashboard()">⚙️ Pengaturan Akun</div>
+        <div class="u-dd-sep"></div>
+        <div class="u-dd-item u-dd-logout" onclick="doLogout()">🚪 Keluar</div>
+      </div>
+    </div>
+    <button onclick="doLogout()" title="Keluar dari akun" style="background:rgba(248,113,113,.12);border:1px solid rgba(248,113,113,.3);color:#f87171;padding:.4rem .85rem;border-radius:8px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:var(--fd);transition:all .2s;display:flex;align-items:center;gap:.35rem;white-space:nowrap" onmouseover="this.style.background='rgba(248,113,113,.25)';this.style.borderColor='rgba(248,113,113,.6)'" onmouseout="this.style.background='rgba(248,113,113,.12)';this.style.borderColor='rgba(248,113,113,.3)'">🚪 Keluar</button>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <a href="#why" onclick="closeMob()">Mengapa Kami</a>
+  <a href="#courses" onclick="closeMob()">Kursus</a>
+  <a href="#teachers" onclick="closeMob()">Pengajar</a>
+  <a href="#pricing" onclick="closeMob()">Harga</a>
+  <a href="#faq" onclick="closeMob()">FAQ</a>
+  <a href="#cta" onclick="closeMob()" style="color:var(--accent);font-weight:700">Mulai Gratis →</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="badge">🎯 Platform #1 Kursus Bahasa Inggris Indonesia</div>
+    <h1>Kuasai <span class="hl1">Bahasa Inggris</span><br>Bicara <span class="hl2">Percaya Diri</span></h1>
+    <p class="hero-sub">Belajar dari pengajar bersertifikat internasional, materi interaktif, dan komunitas aktif. Dari nol hingga fasih — di mana saja, kapan saja.</p>
+    <div class="hero-btns">
+      <a href="#courses" class="btn-primary">Jelajahi Kursus →</a>
+      <a href="#how" class="btn-ghost">▶ Cara Kerja</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">12K+</div><div class="stat-label">Siswa Aktif</div></div>
+      <div class="stat"><div class="stat-num">98%</div><div class="stat-label">Kepuasan</div></div>
+      <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Kursus</div></div>
+      <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Pengajar</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="section-header center reveal">
+    <div class="section-tag">Keunggulan Kami</div>
+    <h2 class="section-title">Kenapa Pilih SpeakUp?</h2>
+    <p class="section-sub">Platform modern dirancang untuk hasil nyata — bukan sekadar teori belaka.</p>
+  </div>
+  <div class="grid-3">
+    <div class="why-card reveal"><div class="why-icon">🎓</div><h3>Pengajar Bersertifikat</h3><p>Semua instruktur memiliki sertifikat TEFL/IELTS dan pengalaman mengajar internasional lebih dari 5 tahun.</p></div>
+    <div class="why-card reveal"><div class="why-icon">📱</div><h3>Belajar Fleksibel</h3><p>Akses materi 24/7 dari HP, tablet, atau laptop. Belajar sesuai jadwal dan kecepatan Anda sendiri.</p></div>
+    <div class="why-card reveal"><div class="why-icon">🗣️</div><h3>Praktek Speaking Live</h3><p>Sesi conversation langsung 2x seminggu bersama native speaker untuk latihan berbicara nyata.</p></div>
+    <div class="why-card reveal"><div class="why-icon">📊</div><h3>Progress Tracking</h3><p>Dashboard personal untuk memantau perkembangan, nilai quiz, dan pencapaian milestone belajar Anda.</p></div>
+    <div class="why-card reveal"><div class="why-icon">🏆</div><h3>Sertifikat Resmi</h3><p>Dapatkan sertifikat yang diakui oleh ratusan perusahaan dan institusi pendidikan di Indonesia.</p></div>
+    <div class="why-card reveal"><div class="why-icon">💬</div><h3>Komunitas Aktif</h3><p>Bergabung dengan 12.000+ pelajar di forum diskusi, study group, dan weekly challenge seru.</p></div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section id="courses">
+  <div class="section-header reveal">
+    <div class="section-tag">Program Belajar</div>
+    <h2 class="section-title">Pilih Kursus Anda</h2>
+    <p class="section-sub">Dari pemula hingga profesional — program yang tepat untuk setiap level.</p>
+  </div>
+  <div class="courses-grid">
+    <div class="course-card reveal" onclick="openModal('Bahasa Inggris Dasar')">
+      <div class="course-thumb tb">🌱<span class="clvl lv-b">Pemula</span></div>
+      <div class="course-body">
+        <h3>Bahasa Inggris Dasar</h3>
+        <p>Mulai dari nol! Pelajari alfabet, kosakata sehari-hari, tata bahasa dasar, dan percakapan sederhana.</p>
+        <div class="course-meta">
+          <span class="meta-item">⏱ 8 Minggu</span>
+          <span class="meta-item">📚 32 Pelajaran</span>
+          <span class="meta-item">⭐ 4.9</span>
+        </div>
+        <div class="course-footer">
+          <span class="price price-free">Gratis</span>
+          <button class="enroll-btn">Daftar Sekarang</button>
+        </div>
+      </div>
+    </div>
+    <div class="course-card reveal" onclick="openModal('Bahasa Inggris Menengah')">
+      <div class="course-thumb ti">🚀<span class="clvl lv-i">Menengah</span></div>
+      <div class="course-body">
+        <h3>Bahasa Inggris Menengah</h3>
+        <p>Tingkatkan grammar, vocabulary, dan kemampuan membaca serta menulis teks kompleks.</p>
+        <div class="course-meta">
+          <span class="meta-item">⏱ 10 Minggu</span>
+          <span class="meta-item">📚 48 Pelajaran</span>
+          <span class="meta-item">⭐ 4.8</span>
+        </div>
+        <div class="course-footer">
+          <span class="price">Rp 299K</span>
+          <button class="enroll-btn">Daftar Sekarang</button>
+        </div>
+      </div>
+    </div>
+    <div class="course-card reveal" onclick="openModal('Bahasa Inggris Lanjutan')">
+      <div class="course-thumb ta">🔥<span class="clvl lv-a">Lanjutan</span></div>
+      <div class="course-body">
+        <h3>Bahasa Inggris Lanjutan</h3>
+        <p>Kuasai idiom, nuansa bahasa, debat akademik, dan penulisan esai tingkat tinggi.</p>
+        <div class="course-meta">
+          <span class="meta-item">⏱ 12 Minggu</span>
+          <span class="meta-item">📚 56 Pelajaran</span>
+          <span class="meta-item">⭐ 4.9</span>
+        </div>
+        <div class="course-footer">
+          <span class="price">Rp 499K</span>
+          <button class="enroll-btn">Daftar Sekarang</button>
+        </div>
+      </div>
+    </div>
+    <div class="course-card reveal" onclick="openModal('Business English')">
+      <div class="course-thumb tbz">💼<span class="clvl lv-i">Menengah</span></div>
+      <div class="course-body">
+        <h3>Business English</h3>
+        <p>Email profesional, presentasi bisnis, negosiasi, dan rapat dalam Bahasa Inggris.</p>
+        <div class="course-meta">
+          <span class="meta-item">⏱ 8 Minggu</span>
+          <span class="meta-item">📚 40 Pelajaran</span>
+          <span class="meta-item">⭐ 4.7</span>
+        </div>
+        <div class="course-footer">
+          <span class="price">Rp 399K</span>
+          <button class="enroll-btn">Daftar Sekarang</button>
+        </div>
+      </div>
+    </div>
+    <div class="course-card reveal" onclick="openModal('Persiapan IELTS / TOEFL')">
+      <div class="course-thumb tie">📝<span class="clvl lv-a">Expert</span></div>
+      <div class="course-body">
+        <h3>Persiapan IELTS / TOEFL</h3>
+        <p>Strategi khusus, latihan soal intensif, dan simulasi ujian untuk target skor tinggi.</p>
+        <div class="course-meta">
+          <span class="meta-item">⏱ 16 Minggu</span>
+          <span class="meta-item">📚 80 Pelajaran</span>
+          <span class="meta-item">⭐ 4.9</span>
+        </div>
+        <div class="course-footer">
+          <span class="price">Rp 799K</span>
+          <button class="enroll-btn">Daftar Sekarang</button>
+        </div>
+      </div>
+    </div>
+    <div class="course-card reveal" onclick="openModal('Conversation Club')">
+      <div class="course-thumb tc">🎙️<span class="clvl lv-b">Semua Level</span></div>
+      <div class="course-body">
+        <h3>Conversation Club</h3>
+        <p>Latihan berbicara langsung dengan native speaker dan sesama pelajar setiap minggu.</p>
+        <div class="course-meta">
+          <span class="meta-item">⏱ Bulanan</span>
+          <span class="meta-item">📚 8 Sesi/bln</span>
+          <span class="meta-item">⭐ 5.0</span>
+        </div>
+        <div class="course-footer">
+          <span class="price">Rp 199K/bln</span>
+          <button class="enroll-btn">Daftar Sekarang</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" style="background:var(--surface)">
+  <div class="section-header center reveal">
+    <div class="section-tag">Cara Kerja</div>
+    <h2 class="section-title">Mulai dalam 4 Langkah</h2>
+    <p class="section-sub">Proses sederhana, hasil luar biasa. Mulai perjalanan Anda hari ini.</p>
+  </div>
+  <div class="steps">
+    <div class="step reveal"><div class="step-num">01</div><h3>Daftar Akun</h3><p>Buat akun gratis dalam 60 detik. Tidak perlu kartu kredit untuk memulai kursus dasar.</p></div>
+    <div class="step reveal"><div class="step-num">02</div><h3>Tes Level</h3><p>Ikuti placement test singkat untuk mengetahui level Bahasa Inggris Anda saat ini secara akurat.</p></div>
+    <div class="step reveal"><div class="step-num">03</div><h3>Pilih Kursus</h3><p>Pilih program yang sesuai tujuan Anda — karier, akademik, percakapan, atau sertifikasi internasional.</p></div>
+    <div class="step reveal"><div class="step-num">04</div><h3>Belajar & Berkembang</h3><p>Akses materi kapan saja, ikuti sesi live, dan pantau progress Anda di dashboard personal.</p></div>
+  </div>
+</section>
+
+<!-- TEACHERS -->
+<section id="teachers">
+  <div class="section-header center reveal">
+    <div class="section-tag">Tim Pengajar</div>
+    <h2 class="section-title">Belajar dari Para Ahli</h2>
+    <p class="section-sub">Instruktur berpengalaman dengan sertifikasi internasional dan rekam jejak terbukti.</p>
+  </div>
+  <div class="grid-3">
+    <div class="teacher-card reveal">
+      <div class="t-avatar">👩‍🏫</div>
+      <h3>Sarah Johnson</h3>
+      <div class="role">IELTS & Academic English</div>
+      <p>Native speaker dari London. Sertifikasi CELTA & Delta. 10+ tahun pengalaman mengajar di Asia Tenggara.</p>
+      <div class="stars">★★★★★ 4.9 (342 ulasan)</div>
+    </div>
+    <div class="teacher-card reveal">
+      <div class="t-avatar">👨‍💻</div>
+      <h3>David Chen</h3>
+      <div class="role">Business & Professional English</div>
+      <p>Mantan konsultan McKinsey. Spesialis English for Business dan komunikasi korporat internasional.</p>
+      <div class="stars">★★★★★ 4.8 (218 ulasan)</div>
+    </div>
+    <div class="teacher-card reveal">
+      <div class="t-avatar">👩‍💼</div>
+      <h3>Amanda Rivers</h3>
+      <div class="role">Conversation & Pronunciation</div>
+      <p>Aktris dan pelatih suara dari New York. Spesialis pengucapan dan kelancaran berbicara natural.</p>
+      <div class="stars">★★★★★ 5.0 (189 ulasan)</div>
+    </div>
+    <div class="teacher-card reveal">
+      <div class="t-avatar">👨‍🎓</div>
+      <h3>Budi Santoso</h3>
+      <div class="role">English for Beginners</div>
+      <p>Lulusan S2 Linguistik UI. Paham tantangan pelajar Indonesia dan metode belajar yang efektif.</p>
+      <div class="stars">★★★★★ 4.9 (405 ulasan)</div>
+    </div>
+    <div class="teacher-card reveal">
+      <div class="t-avatar">👩‍🔬</div>
+      <h3>Emily Watson</h3>
+      <div class="role">TOEFL Preparation</div>
+      <p>Ph.D. Applied Linguistics, Harvard. Pengarang 3 buku persiapan TOEFL dengan passing rate 95%.</p>
+      <div class="stars">★★★★★ 4.9 (271 ulasan)</div>
+    </div>
+    <div class="teacher-card reveal">
+      <div class="t-avatar">👨‍🏫</div>
+      <h3>Marcus Webb</h3>
+      <div class="role">Advanced Grammar & Writing</div>
+      <p>Editor senior di BBC World Service. Keahlian utama: academic writing dan grammar tingkat lanjut.</p>
+      <div class="stars">★★★★★ 4.7 (156 ulasan)</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-header center reveal">
+    <div class="section-tag">Testimoni</div>
+    <h2 class="section-title">Kata Mereka yang Sudah Buktikan</h2>
+  </div>
+  <div class="testi-wrap">
+    <div class="testi-track" id="testiTrack">
+      <div class="testi-card"><p>"Dalam 3 bulan belajar di SpeakUp, saya akhirnya bisa wawancara kerja dalam Bahasa Inggris dan diterima di perusahaan multinasional!"</p><div class="testi-author"><div class="a-avatar">👩</div><div><div class="a-name">Rina Kusuma</div><div class="a-role">Marketing Executive, Jakarta</div></div></div></div>
+      <div class="testi-card"><p>"Skor IELTS saya naik dari 5.5 ke 7.0 setelah ikut program persiapan IELTS selama 4 bulan. Sekarang sudah diterima S2 di Australia!"</p><div class="testi-author"><div class="a-avatar">👨</div><div><div class="a-name">Arif Hidayat</div><div class="a-role">Graduate Student, Melbourne</div></div></div></div>
+      <div class="testi-card"><p>"Conversation Club adalah game changer! Saya sudah tidak takut lagi berbicara bahasa Inggris dengan bule setelah rutin latihan di sini."</p><div class="testi-author"><div class="a-avatar">👩</div><div><div class="a-name">Dewi Lestari</div><div class="a-role">Dokter, Surabaya</div></div></div></div>
+      <div class="testi-card"><p>"Business English course sangat praktis dan langsung applicable. Presentasi saya ke klien asing jadi jauh lebih percaya diri dan profesional."</p><div class="testi-author"><div class="a-avatar">👨</div><div><div class="a-name">Tommy Setiawan</div><div class="a-role">Sales Director, Semarang</div></div></div></div>
+      <div class="testi-card"><p>"Platform-nya user friendly banget, materi video berkualitas tinggi, dan pengajarnya sabar sekali. Worth every penny yang saya keluarkan!"</p><div class="testi-author"><div class="a-avatar">👩</div><div><div class="a-name">Sinta Rahma</div><div class="a-role">Mahasiswi, Bandung</div></div></div></div>
+      <div class="testi-card"><p>"Dari tidak bisa sama sekali, sekarang saya sudah bisa menonton film berbahasa Inggris tanpa subtitle. Terima kasih SpeakUp!"</p><div class="testi-author"><div class="a-avatar">👨</div><div><div class="a-name">Pak Hendra</div><div class="a-role">Wirausaha, Yogyakarta</div></div></div></div>
+      <div class="testi-card"><p>"Dalam 3 bulan belajar di SpeakUp, saya akhirnya bisa wawancara kerja dalam Bahasa Inggris dan diterima di perusahaan multinasional!"</p><div class="testi-author"><div class="a-avatar">👩</div><div><div class="a-name">Rina Kusuma</div><div class="a-role">Marketing Executive, Jakarta</div></div></div></div>
+      <div class="testi-card"><p>"Skor IELTS saya naik dari 5.5 ke 7.0 setelah ikut program persiapan IELTS selama 4 bulan. Sekarang sudah diterima S2 di Australia!"</p><div class="testi-author"><div class="a-avatar">👨</div><div><div class="a-name">Arif Hidayat</div><div class="a-role">Graduate Student, Melbourne</div></div></div></div>
+      <div class="testi-card"><p>"Conversation Club adalah game changer! Saya sudah tidak takut lagi berbicara bahasa Inggris dengan bule setelah rutin latihan di sini."</p><div class="testi-author"><div class="a-avatar">👩</div><div><div class="a-name">Dewi Lestari</div><div class="a-role">Dokter, Surabaya</div></div></div></div>
+      <div class="testi-card"><p>"Business English course sangat praktis dan langsung applicable. Presentasi saya ke klien asing jadi jauh lebih percaya diri dan profesional."</p><div class="testi-author"><div class="a-avatar">👨</div><div><div class="a-name">Tommy Setiawan</div><div class="a-role">Sales Director, Semarang</div></div></div></div>
+      <div class="testi-card"><p>"Platform-nya user friendly banget, materi video berkualitas tinggi, dan pengajarnya sabar sekali. Worth every penny yang saya keluarkan!"</p><div class="testi-author"><div class="a-avatar">👩</div><div><div class="a-name">Sinta Rahma</div><div class="a-role">Mahasiswi, Bandung</div></div></div></div>
+      <div class="testi-card"><p>"Dari tidak bisa sama sekali, sekarang saya sudah bisa menonton film berbahasa Inggris tanpa subtitle. Terima kasih SpeakUp!"</p><div class="testi-author"><div class="a-avatar">👨</div><div><div class="a-name">Pak Hendra</div><div class="a-role">Wirausaha, Yogyakarta</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-header center reveal">
+    <div class="section-tag">Harga</div>
+    <h2 class="section-title">Investasi untuk Masa Depan</h2>
+    <p class="section-sub">Pilihan paket yang fleksibel dan terjangkau untuk semua kebutuhan belajar Anda.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-card reveal">
+      <div class="plan-name">Starter</div>
+      <div class="plan-price">Rp 0<sub>/bulan</sub></div>
+      <p class="plan-desc">Cocok untuk mencoba dan belajar dasar-dasar Bahasa Inggris.</p>
+      <ul class="plan-features">
+        <li>Akses kursus Bahasa Inggris Dasar</li>
+        <li>10 pelajaran video HD</li>
+        <li>Quiz interaktif dasar</li>
+        <li>Forum komunitas</li>
+        <li class="no">Live session dengan pengajar</li>
+        <li class="no">Sertifikat kelulusan</li>
+        <li class="no">Akses semua kursus</li>
+      </ul>
+      <button class="plan-btn outline" onclick="openModal('Paket Starter Gratis')">Mulai Gratis</button>
+    </div>
+    <div class="pricing-card popular reveal">
+      <span class="pop-badge">✨ Paling Populer</span>
+      <div class="plan-name">Pro</div>
+      <div class="plan-price">Rp 199K<sub>/bulan</sub></div>
+      <p class="plan-desc">Untuk pelajar serius yang ingin kemajuan nyata dan cepat.</p>
+      <ul class="plan-features">
+        <li>Akses semua kursus (40+ materi)</li>
+        <li>Video HD tanpa batas</li>
+        <li>Live session 4x/bulan</li>
+        <li>Sertifikat resmi semua kursus</li>
+        <li>Progress tracking dashboard</li>
+        <li>Conversation Club akses penuh</li>
+        <li>Prioritas tanya jawab pengajar</li>
+      </ul>
+      <button class="plan-btn filled" onclick="openModal('Paket Pro')">Pilih Pro</button>
+    </div>
+    <div class="pricing-card reveal">
+      <div class="plan-name">Premium</div>
+      <div class="plan-price">Rp 499K<sub>/bulan</sub></div>
+      <p class="plan-desc">Pengalaman belajar paling intensif dengan mentoring personal.</p>
+      <ul class="plan-features">
+        <li>Semua fitur Pro</li>
+        <li>1-on-1 session 4x/bulan</li>
+        <li>Personal learning roadmap</li>
+        <li>Akses materi IELTS & TOEFL</li>
+        <li>Mock exam + koreksi detail</li>
+        <li>WhatsApp langsung ke pengajar</li>
+        <li>Garansi uang kembali 30 hari</li>
+      </ul>
+      <button class="plan-btn outline" onclick="openModal('Paket Premium')">Pilih Premium</button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-header center reveal">
+    <div class="section-tag">FAQ</div>
+    <h2 class="section-title">Pertanyaan yang Sering Ditanya</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q">Apakah saya harus punya pengalaman belajar Bahasa Inggris sebelumnya? <span class="faq-arrow">+</span></div><div class="faq-a">Tidak sama sekali! Kursus Bahasa Inggris Dasar kami dirancang khusus untuk pemula mutlak yang belum pernah belajar Bahasa Inggris sebelumnya. Kami akan memandu Anda dari awal dengan pendekatan yang ramah dan terstruktur.</div></div>
+    <div class="faq-item"><div class="faq-q">Berapa lama waktu belajar yang dibutuhkan per hari? <span class="faq-arrow">+</span></div><div class="faq-a">Kami merekomendasikan minimal 30 menit per hari untuk hasil optimal. Dengan konsistensi 30-60 menit sehari, kebanyakan siswa sudah merasakan kemajuan signifikan dalam 4-6 minggu pertama.</div></div>
+    <div class="faq-item"><div class="faq-q">Apakah ada jaminan uang kembali? <span class="faq-arrow">+</span></div><div class="faq-a">Ya! Paket Premium kami dilengkapi garansi uang kembali penuh dalam 30 hari tanpa pertanyaan apapun. Kami yakin dengan kualitas program kami dan tidak ingin Anda merasa rugi berinvestasi di sini.</div></div>
+    <div class="faq-item"><div class="faq-q">Bagaimana jadwal live session dengan pengajar? <span class="faq-arrow">+</span></div><div class="faq-a">Live session dijadwalkan di malam hari (19.00-21.00 WIB) dan akhir pekan (09.00-17.00 WIB) untuk mengakomodasi pelajar yang bekerja atau kuliah. Rekaman sesi juga tersedia jika Anda berhalangan hadir.</div></div>
+    <div class="faq-item"><div class="faq-q">Apakah sertifikat SpeakUp diakui oleh perusahaan? <span class="faq-arrow">+</span></div><div class="faq-a">Sertifikat SpeakUp diakui oleh 200+ perusahaan mitra kami termasuk beberapa perusahaan Fortune 500 di Indonesia. Sertifikat dilengkapi QR code verifikasi digital yang mudah dicek keasliannya.</div></div>
+    <div class="faq-item"><div class="faq-q">Bisakah saya upgrade atau downgrade paket kapan saja? <span class="faq-arrow">+</span></div><div class="faq-a">Tentu! Anda bebas upgrade paket kapan saja dan perbedaan biaya akan dihitung secara proporsional. Untuk downgrade, perubahan akan berlaku di siklus penagihan berikutnya.</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="inner">
+    <div class="section-tag" style="justify-content:center;display:flex">🚀 Mulai Sekarang</div>
+    <h2>Siap Bicara Bahasa<br>Inggris dengan Lancar?</h2>
+    <p>Bergabunglah dengan 12.000+ pelajar yang sudah membuktikan metode SpeakUp. Daftar gratis hari ini!</p>
+    <div class="email-form">
+      <input type="tel" placeholder="Contoh: 08123456789" id="ctaWa" maxlength="15"/>
+      <button onclick="handleCTA()">Mulai Gratis →</button>
+    </div>
+    <p style="font-size:.78rem;color:var(--muted);margin-top:.8rem">📱 Kami akan menghubungi Anda via WhatsApp dalam 1×24 jam</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="logo">Speak<span>Up</span></span>
+      <p>Platform kursus Bahasa Inggris online terbaik untuk pelajar Indonesia. Mulai perjalanan belajar Anda hari ini.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Kursus</h4>
+      <ul>
+        <li><a href="#">Bahasa Inggris Dasar</a></li>
+        <li><a href="#">Level Menengah</a></li>
+        <li><a href="#">Level Lanjutan</a></li>
+        <li><a href="#">Business English</a></li>
+        <li><a href="#">IELTS & TOEFL</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Perusahaan</h4>
+      <ul>
+        <li><a href="#">Tentang Kami</a></li>
+        <li><a href="#">Tim Pengajar</a></li>
+        <li><a href="#">Karier</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Press Kit</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Dukungan</h4>
+      <ul>
+        <li><a href="#">Pusat Bantuan</a></li>
+        <li><a href="#">Hubungi Kami</a></li>
+        <li><a href="#">Kebijakan Privasi</a></li>
+        <li><a href="#">Syarat Layanan</a></li>
+        <li><a href="#">Refund Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 SpeakUp. Semua hak dilindungi undang-undang.</p>
+    <div class="socials">
+      <a href="#" title="Instagram">📸</a>
+      <a href="#" title="TikTok">🎵</a>
+      <a href="#" title="YouTube">▶️</a>
+      <a href="#" title="WhatsApp">💬</a>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h2>Daftar Kursus</h2>
+    <div class="course-title" id="modalCourseName"></div>
+    <p>Isi data di bawah, lalu klik tombol WhatsApp untuk langsung terhubung dengan guru kursus kami.</p>
+    <div class="modal-form">
+      <input type="text" placeholder="Nama lengkap Anda" id="regName"/>
+      <input type="tel" placeholder="Nomor WhatsApp Anda (contoh: 08123456789)" id="regPhone"/>
+      <select id="regLevel">
+        <option value="">Pilih level Bahasa Inggris saat ini</option>
+        <option>Pemula (belum bisa sama sekali)</option>
+        <option>Dasar (mengerti sedikit)</option>
+        <option>Menengah (bisa berkomunikasi terbatas)</option>
+        <option>Lanjutan (sudah cukup lancar)</option>
+      </select>
+      <!-- Tombol langsung ke WhatsApp Guru -->
+      <button onclick="submitReg()" style="width:100%;padding:.9rem;background:linear-gradient(135deg,#25d366,#128c7e);border:none;border-radius:10px;color:#fff;font-family:var(--fd);font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.6rem;margin-top:.3rem">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Daftar via WhatsApp Guru
+      </button>
+      <p style="font-size:.75rem;color:var(--muted);text-align:center;margin-top:-.3rem">Anda akan langsung terhubung ke WhatsApp guru kursus kami</p>
+    </div>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div class="auth-overlay" id="authOverlay">
+  <div class="auth-box">
+    <button class="auth-close" onclick="closeAuth()">✕</button>
+
+    <!-- ROLE TABS -->
+    <div class="role-tabs">
+      <button class="role-tab active" id="tabMurid" onclick="switchRole('murid')">🎓 Saya Murid</button>
+      <button class="role-tab" id="tabGuru" onclick="switchRole('guru')">👩‍🏫 Saya Guru</button>
+    </div>
+
+    <div class="auth-body">
+      <!-- MODE TABS -->
+      <div class="mode-tabs">
+        <button class="mode-tab active" id="modeLogin" onclick="switchMode('login')">Masuk</button>
+        <button class="mode-tab" id="modeSignup" onclick="switchMode('signup')">Daftar</button>
+      </div>
+
+      <!-- ===== MURID LOGIN ===== -->
+      <div class="auth-panel active" id="panel-murid-login">
+        <div class="role-badge-murid">🎓 Akun Murid</div>
+        <h3>Selamat Datang Kembali!</h3>
+        <p class="sub">Masuk untuk melanjutkan belajar Bahasa Inggris.</p>
+        <div style="background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.2);border-radius:10px;padding:.7rem 1rem;font-size:.8rem;color:var(--accent)">
+          💡 <strong>Akun Demo:</strong> siswa@demo.com / demo1234 &nbsp;
+          <a onclick="document.getElementById('ml-email').value='siswa@demo.com';document.getElementById('ml-pw').value='demo1234'" style="cursor:pointer;color:var(--accent2);font-weight:700;text-decoration:underline">Isi otomatis</a>
+        </div>
+        <input type="email" placeholder="Email atau nomor WhatsApp" id="ml-email"/>
+        <div class="input-group">
+          <input type="password" placeholder="Kata sandi" id="ml-pw"/>
+          <button class="toggle-pw" onclick="togglePw('ml-pw',this)">👁</button>
+        </div>
+        <div style="text-align:right"><a href="#" style="font-size:.8rem;color:var(--accent)">Lupa kata sandi?</a></div>
+        <button class="auth-submit" onclick="doLogin('murid')">Masuk Sekarang →</button>
+        <div class="switch-mode">Belum punya akun? <a onclick="switchMode('signup')">Daftar gratis</a></div>
+      </div>
+
+      <!-- ===== MURID SIGNUP ===== -->
+      <div class="auth-panel" id="panel-murid-signup">
+        <div class="role-badge-murid">🎓 Akun Murid</div>
+        <h3>Buat Akun Murid</h3>
+        <p class="sub">Gratis selamanya. Mulai belajar hari ini!</p>
+        <div class="form-row">
+          <input type="text" placeholder="Nama depan" id="ms-fname"/>
+          <input type="text" placeholder="Nama belakang" id="ms-lname"/>
+        </div>
+        <input type="email" placeholder="Alamat email aktif" id="ms-email"/>
+        <input type="tel" placeholder="Nomor WhatsApp (contoh: 08123456789)" id="ms-wa" maxlength="15"/>
+        <select id="ms-level">
+          <option value="">Level Bahasa Inggris saat ini</option>
+          <option>Pemula (belum bisa sama sekali)</option>
+          <option>Dasar (mengerti sedikit)</option>
+          <option>Menengah (bisa berkomunikasi terbatas)</option>
+          <option>Lanjutan (sudah cukup lancar)</option>
+        </select>
+        <div class="input-group">
+          <input type="password" placeholder="Buat kata sandi (min. 8 karakter)" id="ms-pw"/>
+          <button class="toggle-pw" onclick="togglePw('ms-pw',this)">👁</button>
+        </div>
+        <button class="auth-submit" onclick="doSignup('murid')">Daftar Gratis 🎉</button>
+        <div class="switch-mode">Sudah punya akun? <a onclick="switchMode('login')">Masuk di sini</a></div>
+      </div>
+
+      <!-- ===== GURU LOGIN ===== -->
+      <div class="auth-panel" id="panel-guru-login">
+        <div class="role-badge-guru">👩‍🏫 Akun Guru</div>
+        <h3>Portal Pengajar</h3>
+        <p class="sub">Masuk ke dashboard pengajar SpeakUp.</p>
+        <div style="background:rgba(167,139,250,.08);border:1px solid rgba(167,139,250,.2);border-radius:10px;padding:.7rem 1rem;font-size:.8rem;color:var(--accent3)">
+          💡 <strong>Akun Demo:</strong> guru@demo.com / demo1234 &nbsp;
+          <a onclick="document.getElementById('gl-email').value='guru@demo.com';document.getElementById('gl-pw').value='demo1234'" style="cursor:pointer;color:var(--accent2);font-weight:700;text-decoration:underline">Isi otomatis</a>
+        </div>
+        <input type="email" placeholder="Email terdaftar pengajar" id="gl-email"/>
+        <div class="input-group">
+          <input type="password" placeholder="Kata sandi" id="gl-pw"/>
+          <button class="toggle-pw" onclick="togglePw('gl-pw',this)">👁</button>
+        </div>
+        <div style="text-align:right"><a href="#" style="font-size:.8rem;color:var(--accent3)">Lupa kata sandi?</a></div>
+        <button class="auth-submit teacher" onclick="doLogin('guru')">Masuk ke Dashboard →</button>
+        <div class="switch-mode">Belum terdaftar sebagai pengajar? <a onclick="switchMode('signup')">Daftar di sini</a></div>
+      </div>
+
+      <!-- ===== GURU SIGNUP ===== -->
+      <div class="auth-panel" id="panel-guru-signup">
+        <div class="role-badge-guru">👩‍🏫 Akun Guru</div>
+        <h3>Daftar sebagai Pengajar</h3>
+        <p class="sub">Bergabunglah dan mulai mengajar di SpeakUp.</p>
+        <div class="form-row">
+          <input type="text" placeholder="Nama depan" id="gs-fname"/>
+          <input type="text" placeholder="Nama belakang" id="gs-lname"/>
+        </div>
+        <input type="email" placeholder="Alamat email aktif" id="gs-email"/>
+        <input type="tel" placeholder="Nomor WhatsApp pengajar" id="gs-wa" maxlength="15"/>
+        <select id="gs-subject">
+          <option value="">Spesialisasi mengajar</option>
+          <option>Bahasa Inggris Dasar & Menengah</option>
+          <option>Bahasa Inggris Lanjutan</option>
+          <option>Business English</option>
+          <option>Persiapan IELTS / TOEFL</option>
+          <option>Conversation & Speaking</option>
+          <option>Grammar & Writing</option>
+        </select>
+        <input type="text" placeholder="Sertifikasi (contoh: CELTA, IELTS Band 8)" id="gs-cert"/>
+        <div class="input-group">
+          <input type="password" placeholder="Buat kata sandi (min. 8 karakter)" id="gs-pw"/>
+          <button class="toggle-pw" onclick="togglePw('gs-pw',this)">👁</button>
+        </div>
+        <button class="auth-submit teacher" onclick="doSignup('guru')">Kirim Pendaftaran 🚀</button>
+        <p style="font-size:.76rem;color:var(--muted);text-align:center">Pendaftaran guru akan direview tim kami dalam 1-3 hari kerja.</p>
+        <div class="switch-mode">Sudah punya akun guru? <a onclick="switchMode('login')">Masuk di sini</a></div>
+      </div>
+
+    </div><!-- /.auth-body -->
+  </div><!-- /.auth-box -->
+</div><!-- /.auth-overlay -->
+<div class="toast" id="toast">
+  <div class="toast-icon">🎉</div>
+  <div class="toast-text">
+    <div class="toast-title">Pendaftaran Berhasil!</div>
+    <div id="toastMsg">Kami akan menghubungi Anda segera.</div>
+  </div>
+</div>
+
+<style>
+  /* ── DASHBOARD OVERLAY ── */
+  .dash-overlay{display:none;position:fixed;inset:0;z-index:6000;background:var(--bg);overflow-y:auto;animation:fadeUp .35s ease}
+  .dash-overlay.active{display:block}
+  .dash-nav{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;background:rgba(10,15,30,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+  .dash-logo{font-family:var(--fd);font-size:1.4rem;font-weight:800;color:var(--accent)}
+  .dash-logo span{color:var(--accent2)}
+  .dash-user{display:flex;align-items:center;gap:.8rem}
+  .dash-ava{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent3));display:flex;align-items:center;justify-content:center;font-size:1rem}
+  .dash-uname{font-family:var(--fd);font-size:.9rem;font-weight:700}
+  .dash-urole{font-size:.72rem;color:var(--muted)}
+  .dash-logout{background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.3);color:#f87171;padding:.4rem .9rem;border-radius:8px;font-size:.82rem;font-weight:600;cursor:pointer;font-family:var(--fd);transition:all .2s}
+  .dash-logout:hover{background:rgba(248,113,113,.2)}
+  .dash-body{max-width:1100px;margin:0 auto;padding:2.5rem 5%}
+  .dash-welcome{margin-bottom:2.5rem}
+  .dash-welcome h2{font-family:var(--fd);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:.3rem}
+  .dash-welcome p{color:var(--muted);font-size:.95rem}
+  .dash-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-bottom:2.5rem}
+  .ds-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.4rem;text-align:center}
+  .ds-num{font-family:var(--fd);font-size:2rem;font-weight:800;color:var(--accent);margin-bottom:.2rem}
+  .ds-label{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+  .dash-section{margin-bottom:2.5rem}
+  .dash-section h3{font-family:var(--fd);font-size:1.15rem;font-weight:700;margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem}
+  .course-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+  .cl-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color .2s}
+  .cl-item:hover{border-color:var(--accent)}
+  .cl-icon{font-size:2rem;flex-shrink:0}
+  .cl-info h4{font-family:var(--fd);font-size:.95rem;font-weight:700;margin-bottom:.2rem}
+  .cl-info p{font-size:.8rem;color:var(--muted)}
+  .cl-prog{margin-top:.6rem;background:rgba(56,189,248,.1);border-radius:100px;height:5px;overflow:hidden}
+  .cl-prog-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent3));border-radius:100px;transition:width .6s ease}
+  .cl-pct{font-size:.72rem;color:var(--accent);margin-top:.3rem}
+  /* Table for user lists */
+  .data-table{width:100%;border-collapse:collapse;font-size:.875rem}
+  .data-table th{padding:.7rem 1rem;text-align:left;font-family:var(--fd);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);border-bottom:1px solid var(--border)}
+  .data-table td{padding:.85rem 1rem;border-bottom:1px solid rgba(56,189,248,.07);vertical-align:middle}
+  .data-table tr:last-child td{border-bottom:none}
+  .data-table tr:hover td{background:rgba(56,189,248,.04)}
+  .tbl-wrap{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;overflow-x:auto}
+  .badge-level{display:inline-block;font-size:.72rem;font-weight:700;padding:.25rem .7rem;border-radius:100px}
+  .badge-pemula{background:rgba(56,189,248,.15);color:var(--accent)}
+  .badge-dasar{background:rgba(74,222,128,.15);color:#4ade80}
+  .badge-menengah{background:rgba(167,139,250,.15);color:var(--accent3)}
+  .badge-lanjutan{background:rgba(244,114,182,.15);color:var(--accent2)}
+  .badge-pending{background:rgba(251,191,36,.15);color:#fbbf24}
+  .badge-aktif{background:rgba(74,222,128,.15);color:#4ade80}
+  .empty-state{text-align:center;padding:3rem;color:var(--muted)}
+  .empty-state .e-icon{font-size:3rem;margin-bottom:.8rem}
+  .empty-state p{font-size:.9rem}
+  .dash-tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+  .dash-tab{padding:.5rem 1.1rem;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:var(--fd);font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s}
+  .dash-tab.active{background:rgba(56,189,248,.1);border-color:var(--accent);color:var(--accent)}
+  .guru-dash-tabs{display:flex;gap:.5rem;margin-bottom:1.5rem}
+  .guru-dash-tab{padding:.5rem 1.1rem;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:var(--fd);font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s}
+  .guru-dash-tab.active{background:rgba(167,139,250,.1);border-color:var(--accent3);color:var(--accent3)}
+  .guru-panel{display:none}
+  .guru-panel.active{display:block}
+</style>
+
+<!-- DASHBOARD MURID -->
+<div class="dash-overlay" id="dashMurid">
+  <div class="dash-nav">
+    <div class="dash-logo">Speak<span>Up</span></div>
+    <div class="dash-user">
+      <div class="dash-ava" id="dMuridAva">🎓</div>
+      <div><div class="dash-uname" id="dMuridName">Murid</div><div class="dash-urole">Murid Aktif</div></div>
+    </div>
+    <button class="dash-logout" onclick="doLogout()">🚪 Keluar</button>
+  </div>
+  <div class="dash-body">
+    <div class="dash-welcome">
+      <h2 id="dMuridWelcome">Selamat Datang! 👋</h2>
+      <p>Lanjutkan perjalanan belajar Bahasa Inggris Anda hari ini.</p>
+    </div>
+    <div class="dash-stats">
+      <div class="ds-card"><div class="ds-num" id="dMuridKursus">0</div><div class="ds-label">Kursus Diikuti</div></div>
+      <div class="ds-card"><div class="ds-num">0</div><div class="ds-label">Pelajaran Selesai</div></div>
+      <div class="ds-card"><div class="ds-num">0</div><div class="ds-label">Sertifikat</div></div>
+      <div class="ds-card"><div class="ds-num" id="dMuridLevel">-</div><div class="ds-label">Level Saat Ini</div></div>
+    </div>
+    <div class="dash-section">
+      <h3>📚 Kursus Tersedia</h3>
+      <div class="course-list">
+        <div class="cl-item"><div class="cl-icon">🌱</div><div class="cl-info"><h4>Bahasa Inggris Dasar</h4><p>8 Minggu · 32 Pelajaran</p><div class="cl-prog"><div class="cl-prog-fill" style="width:0%"></div></div><div class="cl-pct">Belum dimulai</div></div></div>
+        <div class="cl-item"><div class="cl-icon">🚀</div><div class="cl-info"><h4>Bahasa Inggris Menengah</h4><p>10 Minggu · 48 Pelajaran</p><div class="cl-prog"><div class="cl-prog-fill" style="width:0%"></div></div><div class="cl-pct">Belum dimulai</div></div></div>
+        <div class="cl-item"><div class="cl-icon">🔥</div><div class="cl-info"><h4>Bahasa Inggris Lanjutan</h4><p>12 Minggu · 56 Pelajaran</p><div class="cl-prog"><div class="cl-prog-fill" style="width:0%"></div></div><div class="cl-pct">Belum dimulai</div></div></div>
+        <div class="cl-item"><div class="cl-icon">💼</div><div class="cl-info"><h4>Business English</h4><p>8 Minggu · 40 Pelajaran</p><div class="cl-prog"><div class="cl-prog-fill" style="width:0%"></div></div><div class="cl-pct">Belum dimulai</div></div></div>
+        <div class="cl-item"><div class="cl-icon">📝</div><div class="cl-info"><h4>Persiapan IELTS / TOEFL</h4><p>16 Minggu · 80 Pelajaran</p><div class="cl-prog"><div class="cl-prog-fill" style="width:0%"></div></div><div class="cl-pct">Belum dimulai</div></div></div>
+        <div class="cl-item"><div class="cl-icon">🎙️</div><div class="cl-info"><h4>Conversation Club</h4><p>Bulanan · 8 Sesi/bln</p><div class="cl-prog"><div class="cl-prog-fill" style="width:0%"></div></div><div class="cl-pct">Belum dimulai</div></div></div>
+      </div>
+    </div>
+    <div class="dash-section">
+      <h3>📋 Info Akun Saya</h3>
+      <div class="tbl-wrap">
+        <table class="data-table">
+          <thead><tr><th>Field</th><th>Data</th></tr></thead>
+          <tbody id="dMuridInfo"></tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Tombol Keluar bawah Murid -->
+    <div style="text-align:center;padding:2rem 0 1rem">
+      <button onclick="doLogout()" style="background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.35);color:#f87171;padding:.75rem 2.5rem;border-radius:12px;font-size:.95rem;font-weight:700;cursor:pointer;font-family:var(--fd);transition:all .2s;display:inline-flex;align-items:center;gap:.6rem" onmouseover="this.style.background='rgba(248,113,113,.2)'" onmouseout="this.style.background='rgba(248,113,113,.1)'">
+        🚪 Keluar dari Akun
+      </button>
+      <p style="color:var(--muted);font-size:.78rem;margin-top:.7rem">Sesi Anda akan diakhiri dan Anda kembali ke halaman utama.</p>
+    </div>
+  </div>
+</div>
+
+<!-- DASHBOARD GURU -->
+<div class="dash-overlay" id="dashGuru">
+  <div class="dash-nav" style="background:rgba(10,15,30,.95)">
+    <div class="dash-logo">Speak<span>Up</span> <span style="font-size:.7rem;color:var(--accent3);border:1px solid var(--accent3);padding:.1rem .5rem;border-radius:6px;margin-left:.5rem">GURU</span></div>
+    <div class="dash-user">
+      <div class="dash-ava" style="background:linear-gradient(135deg,var(--accent3),var(--accent2))" id="dGuruAva">👩‍🏫</div>
+      <div><div class="dash-uname" id="dGuruName">Guru</div><div class="dash-urole">Pengajar SpeakUp</div></div>
+    </div>
+    <button class="dash-logout" onclick="doLogout()">🚪 Keluar</button>
+  </div>
+  <div class="dash-body">
+    <div class="dash-welcome">
+      <h2 id="dGuruWelcome">Portal Pengajar 👩‍🏫</h2>
+      <p>Kelola kelas, lihat daftar siswa, dan pantau aktivitas pengajaran Anda.</p>
+    </div>
+    <div class="dash-stats">
+      <div class="ds-card"><div class="ds-num" id="dGuruTotalSiswa">0</div><div class="ds-label">Total Siswa</div></div>
+      <div class="ds-card"><div class="ds-num" id="dGuruTotalGuru">0</div><div class="ds-label">Total Pengajar</div></div>
+      <div class="ds-card"><div class="ds-num">6</div><div class="ds-label">Kursus Tersedia</div></div>
+      <div class="ds-card"><div class="ds-num" id="dGuruSpesialis">-</div><div class="ds-label">Spesialisasi</div></div>
+    </div>
+
+    <div class="guru-dash-tabs">
+      <button class="guru-dash-tab active" onclick="switchGuruTab('siswa',this)">🎓 Daftar Siswa</button>
+      <button class="guru-dash-tab" onclick="switchGuruTab('guru',this)">👩‍🏫 Daftar Guru</button>
+      <button class="guru-dash-tab" onclick="switchGuruTab('profil',this)">⚙️ Profil Saya</button>
+    </div>
+
+    <!-- Panel: Daftar Siswa -->
+    <div class="guru-panel active" id="gpSiswa">
+      <div class="dash-section">
+        <h3>🎓 Daftar Siswa Terdaftar</h3>
+        <div class="tbl-wrap">
+          <table class="data-table">
+            <thead><tr><th>#</th><th>Nama</th><th>Email</th><th>WhatsApp</th><th>Level</th><th>Status</th></tr></thead>
+            <tbody id="guruSiswaTable"><tr><td colspan="6"><div class="empty-state"><div class="e-icon">🎓</div><p>Belum ada siswa yang mendaftar.</p></div></td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel: Daftar Guru -->
+    <div class="guru-panel" id="gpGuru">
+      <div class="dash-section">
+        <h3>👩‍🏫 Daftar Pengajar SpeakUp</h3>
+        <div class="tbl-wrap">
+          <table class="data-table">
+            <thead><tr><th>#</th><th>Nama</th><th>Email</th><th>WhatsApp</th><th>Spesialisasi</th><th>Sertifikasi</th><th>Status</th></tr></thead>
+            <tbody id="guruGuruTable"><tr><td colspan="7"><div class="empty-state"><div class="e-icon">👩‍🏫</div><p>Belum ada pengajar lain yang terdaftar.</p></div></td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel: Profil -->
+    <div class="guru-panel" id="gpProfil">
+      <div class="dash-section">
+        <h3>⚙️ Profil Pengajar</h3>
+        <div class="tbl-wrap">
+          <table class="data-table">
+            <thead><tr><th>Field</th><th>Data</th></tr></thead>
+            <tbody id="dGuruInfo"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- Tombol Keluar bawah Guru (tampil di semua tab) -->
+    <div style="text-align:center;padding:2rem 0 1rem;margin-top:.5rem;border-top:1px solid var(--border)">
+      <button onclick="doLogout()" style="background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.35);color:#f87171;padding:.75rem 2.5rem;border-radius:12px;font-size:.95rem;font-weight:700;cursor:pointer;font-family:var(--fd);transition:all .2s;display:inline-flex;align-items:center;gap:.6rem" onmouseover="this.style.background='rgba(248,113,113,.2)'" onmouseout="this.style.background='rgba(248,113,113,.1)'">
+        🚪 Keluar dari Portal Pengajar
+      </button>
+      <p style="color:var(--muted);font-size:.78rem;margin-top:.7rem">Sesi Anda akan diakhiri dan Anda kembali ke halaman utama.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── Mobile menu ──────────────────────────────────────────
+  const hamburger = document.getElementById('hamburger');
+  const mobMenu = document.getElementById('mobMenu');
+  hamburger.addEventListener('click', () => mobMenu.classList.toggle('open'));
+  function closeMob() { mobMenu.classList.remove('open'); }
+
+  // ── Scroll reveal ─────────────────────────────────────────
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => io.observe(el));
+
+  // ── Navbar scroll ─────────────────────────────────────────
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    nav.style.padding = window.scrollY > 50 ? '.8rem 5%' : '1.2rem 5%';
+  });
+
+  // ── Enroll Modal ──────────────────────────────────────────
+  function openModal(courseName) {
+    document.getElementById('modalCourseName').textContent = courseName;
+    document.getElementById('modalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('modalOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // Nomor WhatsApp guru kursus (ganti dengan nomor asli)
+  const GURU_WA_NUMBER = '62881012534467'; // ← Ganti nomor WA guru di sini (format: 62xxx tanpa +)
+
+  function submitReg() {
+    const name  = document.getElementById('regName').value.trim();
+    const phone = document.getElementById('regPhone').value.trim();
+    const level = document.getElementById('regLevel').value;
+    const course = document.getElementById('modalCourseName').textContent;
+    if (!name || !phone) { showToast('Mohon isi nama dan nomor WhatsApp Anda!', true); return; }
+    // Buat pesan otomatis ke WA guru
+    const msg = `Halo Kak, saya ingin mendaftar kursus *${course}* di SpeakUp! 😊\n\n` +
+                `📋 *Data Saya:*\n` +
+                `• Nama: ${name}\n` +
+                `• No. WA: ${phone}\n` +
+                `• Level: ${level || 'Belum dipilih'}\n\n` +
+                `Mohon info lebih lanjut mengenai kursus ini. Terima kasih! 🙏`;
+    const url = `https://wa.me/${GURU_WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+    closeModal();
+    showToast(`Mengarahkan ke WhatsApp guru... 📱`);
+    ['regName','regPhone','regLevel'].forEach(id => document.getElementById(id).value = '');
+    setTimeout(() => window.open(url, '_blank'), 800);
+  }
+
+  // ── CTA WhatsApp ──────────────────────────────────────────
+  function handleCTA() {
+    const wa = document.getElementById('ctaWa').value.trim();
+    if (!wa || wa.replace(/\D/g,'').length < 9) {
+      showToast('Masukkan nomor WhatsApp yang valid ya!', true); return;
+    }
+    showToast(`Nomor ${wa} berhasil didaftarkan! Tim kami akan menghubungi Anda segera. 📱`);
+    document.getElementById('ctaWa').value = '';
+  }
+
+  // ── Toast ─────────────────────────────────────────────────
+  function showToast(msg, isError = false) {
+    const toast = document.getElementById('toast');
+    document.getElementById('toastMsg').textContent = msg;
+    toast.querySelector('.toast-icon').textContent = isError ? '⚠️' : '🎉';
+    toast.querySelector('.toast-title').textContent = isError ? 'Perhatian!' : 'Berhasil!';
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4500);
+  }
+
+  // ── FAQ ───────────────────────────────────────────────────
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // ══════════════════════════════════════════════════════════
+  //  AUTH SYSTEM
+  // ══════════════════════════════════════════════════════════
+  let currentRole = 'murid';
+  let currentMode = 'login';
+  let currentUser = null;
+  let currentUserRole = null;
+
+  // ── Persistent storage pakai localStorage ─────────────────
+  function _loadUsers() {
+    try {
+      const saved = localStorage.getItem('speakup_users');
+      return saved ? JSON.parse(saved) : { murid: [], guru: [] };
+    } catch(e) { return { murid: [], guru: [] }; }
+  }
+  function _saveUsers() {
+    try { localStorage.setItem('speakup_users', JSON.stringify(users)); } catch(e) {}
+  }
+
+  // Akun demo bawaan (selalu ada)
+  const DEMO_MURID = { name: 'Demo Siswa', email: 'siswa@demo.com', wa: '081234567890', level: 'Menengah', pw: 'demo1234', joinDate: '13/05/2026', _demo: true };
+  const DEMO_GURU  = { name: 'Demo Guru', email: 'guru@demo.com', wa: '089876543210', subject: 'Business English', cert: 'CELTA', pw: 'demo1234', joinDate: '132/05/2026', status: 'Aktif', _demo: true };
+
+  const users = _loadUsers();
+
+  // Pastikan akun demo selalu ada
+  if (!users.murid.find(u => u.email === DEMO_MURID.email)) users.murid.unshift(DEMO_MURID);
+  if (!users.guru.find(u => u.email === DEMO_GURU.email))   users.guru.unshift(DEMO_GURU);
+  _saveUsers();
+
+  // ── Open / Close Auth Modal ────────────────────────────────
+  function openAuth(role = 'murid', mode = 'login') {
+    currentRole = role; currentMode = mode;
+    _renderAuth();
+    document.getElementById('authOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeAuth() {
+    document.getElementById('authOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('authOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeAuth();
+  });
+
+  function switchRole(role) { currentRole = role; _renderAuth(); }
+  function switchMode(mode) { currentMode = mode; _renderAuth(); }
+
+  function _renderAuth() {
+    document.getElementById('tabMurid').classList.toggle('active', currentRole === 'murid');
+    document.getElementById('tabGuru').classList.toggle('active', currentRole === 'guru');
+    document.getElementById('modeLogin').classList.toggle('active', currentMode === 'login');
+    document.getElementById('modeSignup').classList.toggle('active', currentMode === 'signup');
+    document.querySelectorAll('.auth-panel').forEach(p => p.classList.remove('active'));
+    const panel = document.getElementById(`panel-${currentRole}-${currentMode}`);
+    if (panel) panel.classList.add('active');
+  }
+
+  // Toggle password visibility
+  function togglePw(inputId, btn) {
+    const inp = document.getElementById(inputId);
+    const isText = inp.type === 'text';
+    inp.type = isText ? 'password' : 'text';
+    btn.textContent = isText ? '👁' : '🙈';
+  }
+
+  // ── Login ──────────────────────────────────────────────────
+  function doLogin(role) {
+    const emailId = role === 'murid' ? 'ml-email' : 'gl-email';
+    const pwId    = role === 'murid' ? 'ml-pw'    : 'gl-pw';
+    const email = document.getElementById(emailId).value.trim();
+    const pw    = document.getElementById(pwId).value;
+    if (!email || !pw) { showToast('Mohon isi semua kolom!', true); return; }
+    const found = users[role].find(u => u.email === email && u.pw === pw);
+    if (!found) { showToast('Email atau kata sandi salah. Coba lagi!', true); return; }
+    closeAuth();
+    currentUser = found;
+    currentUserRole = role;
+    _setLoggedIn(found, role);
+    showToast(`Halo ${found.name.split(' ')[0]}! Selamat datang kembali 👋`);
+  }
+
+  // ── Sign Up ────────────────────────────────────────────────
+  function doSignup(role) {
+    if (role === 'murid') {
+      const fname = document.getElementById('ms-fname').value.trim();
+      const lname = document.getElementById('ms-lname').value.trim();
+      const email = document.getElementById('ms-email').value.trim();
+      const wa    = document.getElementById('ms-wa').value.trim();
+      const level = document.getElementById('ms-level').value;
+      const pw    = document.getElementById('ms-pw').value;
+      if (!fname || !email || !wa || !pw) { showToast('Mohon lengkapi semua kolom!', true); return; }
+      if (pw.length < 8) { showToast('Kata sandi minimal 8 karakter!', true); return; }
+      if (users.murid.find(u => u.email === email)) { showToast('Email sudah terdaftar!', true); return; }
+      const newUser = { name: `${fname} ${lname}`.trim(), email, wa, level: level || 'Belum dipilih', pw, joinDate: new Date().toLocaleDateString('id-ID') };
+      users.murid.push(newUser);
+      _saveUsers();
+      currentUser = newUser;
+      currentUserRole = 'murid';
+      closeAuth();
+      _setLoggedIn(newUser, 'murid');
+      showToast(`Selamat datang, ${fname}! Akun murid berhasil dibuat. 🎉`);
+    } else {
+      const fname   = document.getElementById('gs-fname').value.trim();
+      const lname   = document.getElementById('gs-lname').value.trim();
+      const email   = document.getElementById('gs-email').value.trim();
+      const wa      = document.getElementById('gs-wa').value.trim();
+      const subject = document.getElementById('gs-subject').value;
+      const cert    = document.getElementById('gs-cert').value.trim();
+      const pw      = document.getElementById('gs-pw').value;
+      if (!fname || !email || !wa || !subject || !pw) { showToast('Mohon lengkapi semua kolom!', true); return; }
+      if (pw.length < 8) { showToast('Kata sandi minimal 8 karakter!', true); return; }
+      if (users.guru.find(u => u.email === email)) { showToast('Email sudah terdaftar!', true); return; }
+      const newUser = { name: `${fname} ${lname}`.trim(), email, wa, subject: subject || '-', cert: cert || '-', pw, joinDate: new Date().toLocaleDateString('id-ID'), status: 'Pending Review' };
+      users.guru.push(newUser);
+      _saveUsers();
+      currentUser = newUser;
+      currentUserRole = 'guru';
+      closeAuth();
+      _setLoggedIn(newUser, 'guru');
+      showToast(`Pendaftaran guru ${fname} berhasil! Akun aktif untuk demo. 🚀`);
+    }
+  }
+
+  // ── Session UI ────────────────────────────────────────────
+  function _setLoggedIn(user, role) {
+    document.getElementById('navAuth').style.display = 'none';
+    document.getElementById('pillWrap').style.display = 'flex';
+    document.getElementById('pillAva').textContent = role === 'guru' ? '👩‍🏫' : '🎓';
+    document.getElementById('pillName').textContent = user.name.split(' ')[0];
+    document.getElementById('pillRole').textContent = role === 'guru' ? 'Pengajar' : 'Murid';
+  }
+
+  function toggleDropdown() {
+    document.getElementById('userDropdown').classList.toggle('open');
+  }
+  document.addEventListener('click', function(e) {
+    const wrap = document.getElementById('pillWrap');
+    if (wrap && !wrap.contains(e.target)) {
+      document.getElementById('userDropdown').classList.remove('open');
+    }
+  });
+
+  function doLogout() {
+    // Close any open dashboard
+    document.getElementById('dashMurid').classList.remove('active');
+    document.getElementById('dashGuru').classList.remove('active');
+    document.body.style.overflow = '';
+    document.getElementById('navAuth').style.display = 'flex';
+    document.getElementById('pillWrap').style.display = 'none';
+    document.getElementById('userDropdown').classList.remove('open');
+    currentUser = null;
+    currentUserRole = null;
+    showToast('Anda telah keluar. Sampai jumpa! 👋');
+  }
+
+  // ── Open Dashboard ────────────────────────────────────────
+  function openDashboard() {
+    document.getElementById('userDropdown').classList.remove('open');
+    if (!currentUser) return;
+    if (currentUserRole === 'murid') {
+      _buildMuridDash(currentUser);
+      document.getElementById('dashMurid').classList.add('active');
+    } else {
+      _buildGuruDash(currentUser);
+      document.getElementById('dashGuru').classList.add('active');
+    }
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDashboard() {
+    document.getElementById('dashMurid').classList.remove('active');
+    document.getElementById('dashGuru').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // ── Build Murid Dashboard ─────────────────────────────────
+  function _buildMuridDash(user) {
+    document.getElementById('dMuridAva').textContent = '🎓';
+    document.getElementById('dMuridName').textContent = user.name;
+    document.getElementById('dMuridWelcome').textContent = `Halo, ${user.name.split(' ')[0]}! 👋`;
+    document.getElementById('dMuridKursus').textContent = '0';
+    // Level badge display
+    const lvl = (user.level || 'Pemula').split(' ')[0];
+    document.getElementById('dMuridLevel').textContent = lvl;
+    // Info table
+    const tbody = document.getElementById('dMuridInfo');
+    tbody.innerHTML = `
+      <tr><td style="color:var(--muted)">Nama Lengkap</td><td>${user.name}</td></tr>
+      <tr><td style="color:var(--muted)">Email</td><td>${user.email}</td></tr>
+      <tr><td style="color:var(--muted)">WhatsApp</td><td>${user.wa}</td></tr>
+      <tr><td style="color:var(--muted)">Level</td><td>${user.level || '-'}</td></tr>
+      <tr><td style="color:var(--muted)">Tanggal Daftar</td><td>${user.joinDate || '-'}</td></tr>
+      <tr><td style="color:var(--muted)">Status</td><td><span class="badge-level badge-aktif">Aktif</span></td></tr>
+    `;
+  }
+
+  // ── Build Guru Dashboard ──────────────────────────────────
+  function _buildGuruDash(user) {
+    document.getElementById('dGuruAva').textContent = '👩‍🏫';
+    document.getElementById('dGuruName').textContent = user.name;
+    document.getElementById('dGuruWelcome').textContent = `Portal Pengajar — ${user.name.split(' ')[0]} 👩‍🏫`;
+    document.getElementById('dGuruTotalSiswa').textContent = users.murid.length;
+    document.getElementById('dGuruTotalGuru').textContent = users.guru.length;
+    const subj = (user.subject || '-').split(' ').slice(0,2).join(' ');
+    document.getElementById('dGuruSpesialis').textContent = subj;
+
+    // Siswa table
+    const stb = document.getElementById('guruSiswaTable');
+    if (users.murid.length === 0) {
+      stb.innerHTML = `<tr><td colspan="6"><div class="empty-state"><div class="e-icon">🎓</div><p>Belum ada siswa yang mendaftar.</p></div></td></tr>`;
+    } else {
+      stb.innerHTML = users.murid.map((s, i) => {
+        const lvl = (s.level || 'Pemula').split(' ')[0].toLowerCase();
+        const cls = `badge-level badge-${lvl}`;
+        return `<tr>
+          <td>${i+1}</td>
+          <td><strong>${s.name}</strong></td>
+          <td>${s.email}</td>
+          <td>${s.wa}</td>
+          <td><span class="${cls}">${s.level || '-'}</span></td>
+          <td><span class="badge-level badge-aktif">Aktif</span></td>
+        </tr>`;
+      }).join('');
+    }
+
+    // Guru table
+    const gtb = document.getElementById('guruGuruTable');
+    if (users.guru.length === 0) {
+      gtb.innerHTML = `<tr><td colspan="7"><div class="empty-state"><div class="e-icon">👩‍🏫</div><p>Belum ada pengajar lain.</p></div></td></tr>`;
+    } else {
+      gtb.innerHTML = users.guru.map((g, i) => {
+        const statusCls = g.status === 'Aktif' ? 'badge-aktif' : 'badge-pending';
+        return `<tr>
+          <td>${i+1}</td>
+          <td><strong>${g.name}</strong></td>
+          <td>${g.email}</td>
+          <td>${g.wa}</td>
+          <td>${g.subject || '-'}</td>
+          <td>${g.cert || '-'}</td>
+          <td><span class="badge-level ${statusCls}">${g.status || 'Pending'}</span></td>
+        </tr>`;
+      }).join('');
+    }
+
+    // Profil table
+    document.getElementById('dGuruInfo').innerHTML = `
+      <tr><td style="color:var(--muted)">Nama Lengkap</td><td>${user.name}</td></tr>
+      <tr><td style="color:var(--muted)">Email</td><td>${user.email}</td></tr>
+      <tr><td style="color:var(--muted)">WhatsApp</td><td>${user.wa}</td></tr>
+      <tr><td style="color:var(--muted)">Spesialisasi</td><td>${user.subject || '-'}</td></tr>
+      <tr><td style="color:var(--muted)">Sertifikasi</td><td>${user.cert || '-'}</td></tr>
+      <tr><td style="color:var(--muted)">Tanggal Daftar</td><td>${user.joinDate || '-'}</td></tr>
+      <tr><td style="color:var(--muted)">Status</td><td><span class="badge-level badge-pending">${user.status || 'Pending Review'}</span></td></tr>
+    `;
+  }
+
+  // ── Guru Dashboard Tabs ───────────────────────────────────
+  function switchGuruTab(tab, btn) {
+    document.querySelectorAll('.guru-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.guru-dash-tab').forEach(b => b.classList.remove('active'));
+    document.getElementById(`gp${tab.charAt(0).toUpperCase()+tab.slice(1)}`).classList.add('active');
+    btn.classList.add('active');
+    // Refresh data tiap kali buka tab
+    if (currentUser && currentUserRole === 'guru') _buildGuruDash(currentUser);
+  }
+</script>
+</body>
+</html>
